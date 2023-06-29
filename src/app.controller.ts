@@ -27,7 +27,7 @@ export class AppController {
 
   @Get('/premium-echo')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.premium)
+  @Roles(Role.doctor)
   getPremiumEcho(@Req() req, @Res() res, @Body() body) {
     res.status(200).json(body);
   }
