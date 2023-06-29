@@ -1,7 +1,5 @@
 # NestJS
 
-# GM2: NodeJS Technical Interview Exercise
-
 ## What is going to be evaluated?
 
 1. Clean Code
@@ -11,7 +9,6 @@
 5. How to handle Async operations
 6. Express Best practices
 7. Configuration: How to use env variables 
-
 
 ## Exercise definition
 
@@ -52,7 +49,7 @@ Only as an example/reference. You can use create your own schema.
 
 -------
 
-The project ti's built using the latest version of NestJS, which is a powerful and flexible framework for creating efficient and scalable server-side applications. It includes TypeScript, PostgreSQL, and JWT authentication right out of the box, so you don't have to worry about setting those up yourself.
+The project it's built using the latest version of NestJS, which is a powerful and flexible framework for creating efficient and scalable server-side applications. It includes TypeScript, PostgreSQL, and JWT authentication right out of the box, so you don't have to worry about setting those up yourself.
 
 Features include configuration support with Dotenv, RBAC and CBAC for authorization, TypeORM for interacting with databases, Swagger for API documentation, and Docker Compose for container orchestration. It has pre-configured linting tools and secure HTTP headers with Helmet.
 
