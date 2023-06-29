@@ -1,8 +1,60 @@
-# NestJS Boilerplate
+# NestJS
 
-It's built using the latest version of NestJS, which is a powerful and flexible framework for creating efficient and scalable server-side applications. The boilerplate includes TypeScript, PostgreSQL, and JWT authentication right out of the box, so you don't have to worry about setting those up yourself.
+# GM2: NodeJS Technical Interview Exercise
 
-Other awesome features include configuration support with Dotenv, RBAC and CBAC for authorization, TypeORM for interacting with databases, Swagger for API documentation, and Docker Compose for container orchestration. Plus, the boilerplate also comes with pre-configured linting tools and secure HTTP headers with Helmet.
+## What is going to be evaluated?
+
+1. Clean Code
+2. Self-documented Code
+3. MVC Pattern
+4. Error Handling
+5. How to handle Async operations
+6. Express Best practices
+7. Configuration: How to use env variables 
+
+
+## Exercise definition
+
+The task involves creating the necessary functionalities that allow a user with a doctor role to view EHRS (which is a text file that describes the patient's symptoms and medical history) one by one and label them with an ICD-10 diagnostic code and a description of the diagnosis. The application should record the EHRS, doctor identifications and diagnosis labels. The user should be able to log in with their email and password.
+
+1. Create an endpoint that allows the user to log in with their email and password, respond with an error message in case of failure with the most convenient error code.
+2. Create an endpoint that allows the user to retrieve EHRS (use pagination).
+3. Create an endpoint that allows the user to label an EHR with an ICD-10 diagnostic code and a description of the diagnosis, respond with an error message in case of failure with the most convenient error code.
+4. Implement a middleware to handle application errors.
+
+## Entities schema
+
+Only as an example/reference. You can use create your own schema.
+
+### EHR
+
+* id
+* patient_name
+* description
+
+### Users (Doctors)
+
+* id
+* name
+
+### Conditions
+
+* id
+* diagnostic_code
+* description
+
+### EHR Diagnosis Labels
+
+* id
+* ehr_id
+* doctor_id
+* condition_id
+
+-------
+
+The project ti's built using the latest version of NestJS, which is a powerful and flexible framework for creating efficient and scalable server-side applications. It includes TypeScript, PostgreSQL, and JWT authentication right out of the box, so you don't have to worry about setting those up yourself.
+
+Features include configuration support with Dotenv, RBAC and CBAC for authorization, TypeORM for interacting with databases, Swagger for API documentation, and Docker Compose for container orchestration. It has pre-configured linting tools and secure HTTP headers with Helmet.
 
 ## 🚀 Features
 

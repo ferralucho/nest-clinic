@@ -11,7 +11,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('prime nestjs')
-    .setDescription('Boilerplate for nestjs')
+    .setDescription('NestJs app')
     .setVersion('1.0')
     .addTag('api')
     .build();
