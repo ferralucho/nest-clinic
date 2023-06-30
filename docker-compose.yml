@@ -6,7 +6,6 @@ services:
     image: app_server:1.0.0
     build:
       context: .
-      target: production
       dockerfile: ./Dockerfile
     command: npm run start:prod
     env_file: .env
