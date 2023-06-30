@@ -71,6 +71,8 @@ Features include configuration support with Dotenv, RBAC and CBAC for authorizat
 - 💖 **Prettier** - Opinionated Code Formatter
 - ✨ **Commitlint** - Lint your conventional commits
 - 🕵️‍♂️ **Code Scanning** - Code scanning with CodeQL
+  
+Use ehrinsomniaendpoints.json to import the endpoints into Insomnia.
 
 ## Quick Setup (Production)
 
