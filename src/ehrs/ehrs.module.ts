@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { EHRsService } from './ehrs.service';
 import { EHRsController } from './ehrs.controller';
-import { LoggerModule } from 'src/logger/logger.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { EHR } from './entities/ehr.entity';
 
 @Module({
-  imports: [LoggerModule],
+  imports: [TypeOrmModule.forFeature([EHR])],
   controllers: [EHRsController],
   providers: [EHRsService],
   exports: [EHRsService],

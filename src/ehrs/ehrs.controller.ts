@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, ParseIntPipe } from '@nestjs/common';
 import { EHRsService } from './ehrs.service';
 import { CreateEHRDto } from './dto/create-ehr.dto';
 import { UpdateEHRDto } from './dto/update-ehr.dto';
+import { EHR } from './entities/ehr.entity';
 
 @Controller('ehrs')
 export class EHRsController {
@@ -13,8 +14,11 @@ export class EHRsController {
   }
 
   @Get()
-  findAll() {
-    return this.ehrsService.findAll();
+  async findAll(
+    @Query('page', ParseIntPipe) page: number = 1,
+    @Query('limit', ParseIntPipe) limit: number = 10,
+  ): Promise<EHR[]> {
+    return this.ehrsService.findAll(page, limit);
   }
 
   @Get(':id')
