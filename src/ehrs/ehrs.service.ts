@@ -1,17 +1,16 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateEHRDto } from './dto/create-ehr.dto';
-import { UpdateEHRDto } from './dto/update-ehr.dto';
-import { EHR } from './entities/ehr.entity';
+import { CreateEHRDiagnosisDTO } from './dto/create-ehr.dto';
+import { Conditions, EHR, EHRDiagnosisLabels } from './entities/ehr.entity';
+import { User } from 'src/users/entities/user.entity';
 
 @Injectable()
 export class EHRsService {
-  constructor(@InjectRepository(EHR) private readonly ehrRepository: Repository<EHR>) {}
-
-  create(createEHRDto: CreateEHRDto) {
-    return 'This action adds a new ehr';
-  }
+  constructor(@InjectRepository(EHR) private readonly ehrRepository: Repository<EHR>,
+  @InjectRepository(EHRDiagnosisLabels) private readonly ehrDiagnosisRepository: Repository<EHRDiagnosisLabels>,
+  @InjectRepository(Conditions)
+    private readonly conditionsRepository: Repository<Conditions>) {}
 
   async findAll(page: number = 1, limit: number = 10): Promise<EHR[]> {
     const skip = (page - 1) * limit;
@@ -21,15 +20,23 @@ export class EHRsService {
     });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} ehr`;
-  }
+  async labelEHR(ehrId: number, createEHRDiagnosisDTO: CreateEHRDiagnosisDTO): Promise<void> {
+    const ehr = await this.ehrRepository.findOne(ehrId);
+    if (!ehr) {
+      throw new NotFoundException('EHR not found');
+    }
 
-  update(id: number, updateEHRDto: UpdateEHRDto) {
-    return `This action updates a #${id} ehr`;
-  }
+    const condition = await this.conditionsRepository.findOne({
+      diagnosticCode: createEHRDiagnosisDTO.diagnosticCode,
+    });
+    if (!condition) {
+      throw new NotFoundException('Condition not found');
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} ehr`;
+    await this.ehrDiagnosisRepository.save({
+      condition: condition,
+      doctor: {id: 1} as User,
+      ehr: ehr
+    });
   }
 }

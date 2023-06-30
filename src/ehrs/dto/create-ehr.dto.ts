@@ -1,1 +1,4 @@
-export class CreateEHRDto {}
+export class CreateEHRDiagnosisDTO {
+    diagnosticCode: string;
+    description: string;
+  }

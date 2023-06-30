@@ -1,17 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, ParseIntPipe, HttpStatus, HttpException } from '@nestjs/common';
 import { EHRsService } from './ehrs.service';
-import { CreateEHRDto } from './dto/create-ehr.dto';
-import { UpdateEHRDto } from './dto/update-ehr.dto';
 import { EHR } from './entities/ehr.entity';
+import { CreateEHRDiagnosisDTO } from './dto/create-ehr.dto';
 
 @Controller('ehrs')
 export class EHRsController {
   constructor(private readonly ehrsService: EHRsService) {}
-
-  @Post()
-  create(@Body() createEHRDto: CreateEHRDto) {
-    return this.ehrsService.create(createEHRDto);
-  }
 
   @Get()
   async findAll(
@@ -21,18 +15,11 @@ export class EHRsController {
     return this.ehrsService.findAll(page, limit);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.ehrsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateEHRDto: UpdateEHRDto) {
-    return this.ehrsService.update(+id, updateEHRDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.ehrsService.remove(+id);
+  @Post(':id/label')
+  async labelEHR(
+    @Param('id') ehrId: number,
+    @Body() createEHRDiagnosisDTO: CreateEHRDiagnosisDTO,
+  ): Promise<void> {
+    await this.ehrsService.labelEHR(ehrId, createEHRDiagnosisDTO);   
   }
 }
