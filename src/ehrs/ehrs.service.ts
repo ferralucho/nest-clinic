@@ -7,10 +7,13 @@ import { User } from 'src/users/entities/user.entity';
 
 @Injectable()
 export class EHRsService {
-  constructor(@InjectRepository(EHR) private readonly ehrRepository: Repository<EHR>,
-  @InjectRepository(EHRDiagnosisLabels) private readonly ehrDiagnosisRepository: Repository<EHRDiagnosisLabels>,
-  @InjectRepository(Conditions)
-    private readonly conditionsRepository: Repository<Conditions>) {}
+  constructor(
+    @InjectRepository(EHR) private readonly ehrRepository: Repository<EHR>,
+    @InjectRepository(EHRDiagnosisLabels)
+    private readonly ehrDiagnosisRepository: Repository<EHRDiagnosisLabels>,
+    @InjectRepository(Conditions)
+    private readonly conditionsRepository: Repository<Conditions>
+  ) {}
 
   async findAll(page: number = 1, limit: number = 10): Promise<EHR[]> {
     const skip = (page - 1) * limit;
@@ -35,8 +38,8 @@ export class EHRsService {
 
     await this.ehrDiagnosisRepository.save({
       condition: condition,
-      doctor: {id: 1} as User,
-      ehr: ehr
+      doctor: { id: 1 } as User,
+      ehr: ehr,
     });
   }
 }

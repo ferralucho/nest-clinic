@@ -1,4 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query, ParseIntPipe, HttpStatus, HttpException } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+  ParseIntPipe,
+  HttpStatus,
+  HttpException,
+} from '@nestjs/common';
 import { EHRsService } from './ehrs.service';
 import { EHR } from './entities/ehr.entity';
 import { CreateEHRDiagnosisDTO } from './dto/create-ehr.dto';
@@ -10,7 +22,7 @@ export class EHRsController {
   @Get()
   async findAll(
     @Query('page', ParseIntPipe) page: number = 1,
-    @Query('limit', ParseIntPipe) limit: number = 10,
+    @Query('limit', ParseIntPipe) limit: number = 10
   ): Promise<EHR[]> {
     return this.ehrsService.findAll(page, limit);
   }
@@ -18,8 +30,8 @@ export class EHRsController {
   @Post(':id/label')
   async labelEHR(
     @Param('id') ehrId: number,
-    @Body() createEHRDiagnosisDTO: CreateEHRDiagnosisDTO,
+    @Body() createEHRDiagnosisDTO: CreateEHRDiagnosisDTO
   ): Promise<void> {
-    await this.ehrsService.labelEHR(ehrId, createEHRDiagnosisDTO);   
+    await this.ehrsService.labelEHR(ehrId, createEHRDiagnosisDTO);
   }
 }

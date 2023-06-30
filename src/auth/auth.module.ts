@@ -13,7 +13,11 @@ import { LoggerModule } from 'src/logger/logger.module';
 @Module({
   imports: [
     LoggerModule,
-    PassportModule.register({ defaultStrategy: 'jwt', property: 'user', session: false }),
+    PassportModule.register({
+      defaultStrategy: 'jwt',
+      property: 'user',
+      session: false,
+    }),
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({

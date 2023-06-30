@@ -11,7 +11,7 @@ export class AuthService {
   constructor(
     private readonly logger: LoggerService = new Logger(AuthService.name),
     private jwtService: JwtService,
-    private userservice: UsersService,
+    private userservice: UsersService
   ) {}
 
   async login(user: any): Promise<Record<string, any>> {
