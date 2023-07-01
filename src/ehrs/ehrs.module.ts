@@ -6,6 +6,7 @@ import { Conditions, EHR, EHRDiagnosisLabels } from './entities/ehr.entity';
 import { JwtService } from '@nestjs/jwt';
 import { JwtAuthGuard } from 'src/auth/strategy/jwt-auth.guard';
 import { AuthModule } from 'src/auth/auth.module';
+import { UsersModule } from 'src/users/users.module';
 
 @Module({
   imports: [

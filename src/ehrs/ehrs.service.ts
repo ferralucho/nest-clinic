@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateEHRDiagnosisDTO } from './dto/create-ehr.dto';
 import { Conditions, EHR, EHRDiagnosisLabels } from './entities/ehr.entity';
-import { User } from 'src/users/entities/user.entity';
+import { User } from '../users/entities/user.entity';
 
 @Injectable()
 export class EHRsService {
