@@ -50,7 +50,11 @@ export class AuthService {
           status: 200,
           msg: {
             email: user.email,
-            access_token: this.jwtService.sign({ email: user.email, roles: [userDetails.roles] }),
+            access_token: this.jwtService.sign({
+              id: userDetails.id,
+              email: user.email,
+              roles: [userDetails.roles],
+            }),
           },
         };
       } else {

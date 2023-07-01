@@ -38,7 +38,7 @@ export class EHRsService {
 
     await this.ehrDiagnosisRepository.save({
       condition: condition,
-      doctor: { id: 1 } as User,
+      doctor: { id: createEHRDiagnosisDTO.userId } as User,
       ehr: ehr,
     });
   }
