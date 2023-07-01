@@ -73,6 +73,7 @@ Features include configuration support with Dotenv, RBAC and CBAC for authorizat
 - 🕵️‍♂️ **Code Scanning** - Code scanning with CodeQL
   
 Use ehrinsomniaendpoints.json to import the endpoints into Insomnia.
+Use seeddata.sql to insert some mock values into the tables
 
 ## Quick Setup (Production)
 
