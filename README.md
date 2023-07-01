@@ -141,3 +141,4 @@ openssl rsa -in private_key.pem -outform PEM -pubout -out public_key.pem
 # It needs be copied&pasted from terminal manually
 awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' public_key.pem
 ```
+For error middleware see AllExceptionsFilter.
