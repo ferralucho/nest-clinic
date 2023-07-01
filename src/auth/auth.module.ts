@@ -23,7 +23,7 @@ import { LoggerModule } from 'src/logger/logger.module';
       useFactory: (configService: ConfigService) => ({
         privateKey: configService.get<string>('keys.privateKey'),
         publicKey: configService.get<string>('keys.publicKey'),
-        signOptions: { expiresIn: '60s', algorithm: 'RS256' },
+        signOptions: { expiresIn: '1200s', algorithm: 'RS256' },
       }),
       inject: [ConfigService],
     }),
